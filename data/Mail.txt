@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "content": "你好呀",
+    "title": "你好呀",
+    "ct": 1491204962,
+    "read": true,
+    "sender_id": 1,
+    "receiver_id": 1
+  },
+  {
+    "id": 2,
+    "content": "吃",
+    "title": "吃",
+    "ct": 1491205126,
+    "read": false,
+    "sender_id": 1,
+    "receiver_id": 2
+  }
+]
