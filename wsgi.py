@@ -27,5 +27,5 @@ autorestart=true
 
 /usr/local/bin/gunicorn wsgi
 --bind 0.0.0.0:2001
---pid /tmp/飙泪og.pid
+--pid /tmp/bbs.pid
 """
