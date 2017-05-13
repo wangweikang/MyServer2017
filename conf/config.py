@@ -1,3 +1,3 @@
-secret_key = 'web18 bbs'
-user_file_director = r'C:\Users\akirayu101\Documents\web20\user_image'
+secret_key = 'my_server'
+user_file_director = r''
 accept_user_file_type = ['jpg', 'gif', 'png']
