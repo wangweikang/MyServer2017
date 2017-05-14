@@ -10,7 +10,7 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from models.user import User
-from config import user_file_director
+from conf import config.user_file_director
 import os
 
 from utils import log
