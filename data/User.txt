@@ -1,8 +1,1 @@
-[
-  {
-    "id": 1,
-    "username": "test",
-    "password": "3ad07d352d8acf9a5b79db8dcbf88c26ddb07177e4c828c7b94e38a0ee698793",
-    "user_image": "Screenshot_7.png"
-  }
-]
+[]

@@ -1,12 +1,2 @@
 [
-  {
-    "id": 1,
-    "views": 10,
-    "title": "test",
-    "content": "test",
-    "ct": 1491201817,
-    "ut": 1491201817,
-    "user_id": 1,
-    "board_id": 1
-  }
 ]
