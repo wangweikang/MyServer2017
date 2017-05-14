@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask
 
-import conf.config
+from conf import config
 
 
 # web framework
