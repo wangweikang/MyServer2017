@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>bbs club</title>
+    <link href="//cdn.bootcss.com/github-markdown-css/2.4.0/github-markdown.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/lib/editor/editor.css">
@@ -13,7 +14,15 @@
     <script src="/static/lib/editor/editor.js"></script>
     <script src="/static/lib/editor/ext.js"></script>
     <link rel="icon" href="" type="image/x-icon"/>
-
+    <script>
+        var __main = function () {
+            renderMarkDown();
+        };
+        $(document).ready(function () {
+                console.log('ready');
+                __main();
+            });
+    </script>
 </head>
 
 <body>
@@ -84,7 +93,7 @@
                 </div>
                 <div class='reply_content'>
                 <div class='reply_content'>
-                    <div class="markdown-text">
+                    <div class="markdown-body">
                         {{ r.content | markdown }}
                     </div>
                 </div>
