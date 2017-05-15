@@ -17,40 +17,40 @@
     <script src="/static/lib/editor/ext.js"></script>
     <link rel="icon" href="" type="image/x-icon"/>
     <script>
-    var renderMarkDown = function () {
-    marked.setOptions({
-        renderer: new marked.Renderer(),
-        gfm: true,
-        tables: true,
-        breaks: true,
-        pedantic: true,
-    });
-
-    $('.markdown-body').each(function () {
-        var tag = $(this);
-        var raw = tag.text();
-        tag.html(marked(raw));
-    });
-
-    $('pre > code').each(function () {
-        var tag = $(this);
-        var target = this;
-
-        var code = tag.text();
-        tag.empty();
-
-        var attr = tag.attr('class');
-        var language;
-        if (attr != undefined) {
-            language = attr.split('-')[1];
-        } else {
-            language = 'python';
-        }
-
-        initCodeMirror(code, language, target)
-
+        var renderMarkDown = function () {
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: true,
+            pedantic: true,
         });
-    };
+
+        $('.markdown-body').each(function () {
+            var tag = $(this);
+            var raw = tag.text();
+            tag.html(marked(raw));
+        });
+
+        $('pre > code').each(function () {
+            var tag = $(this);
+            var target = this;
+
+            var code = tag.text();
+            tag.empty();
+
+            var attr = tag.attr('class');
+            var language;
+            if (attr != undefined) {
+                language = attr.split('-')[1];
+            } else {
+                language = 'python';
+            }
+
+            initCodeMirror(code, language, target)
+
+            });
+        };
         var __main = function () {
             renderMarkDown();
         };
@@ -106,8 +106,9 @@
             {% for r in topic.replies() %}
             <div class='cell reply_area reply_item'>
                 <div class='author_content'>
-                    <a href="/user/leiwei1991" class="user_avatar">
-                        <img src="https://avatars2.githubusercontent.com/u/10721874?v=3&amp;s=120" title="{{ r.user().username }}" />
+                    <a href="" class="user_avatar">
+                        <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
+                        title="{{ r.user().username }}" />
                     </a>
                     <div class='user_info'>
                         <a class='dark reply_author'>
@@ -119,24 +120,23 @@
                     </div>
                     <div class='user_action'>
                         <span>
-                        <i class="fa up_btn
-                          fa-thumbs-o-up
-                          invisible" title="喜欢"></i>
+                        <i class="fa up_btn fa-thumbs-o-up invisible" title="喜欢">
+                        </i>
                         <span class="up-count">
                         </span>
                         </span>
                     </div>
                 </div>
-                <div class='reply_content'>
+
                 <div class='reply_content'>
                     <div class="markdown-body">
                         {{ r.content }}
                     </div>
                 </div>
-            </div>
+
             {% endfor %}
             <div>
-                <form action="{{ url_for('reply.add') }}" method="post">
+            <form action="{{ url_for('reply.add') }}" method="post">
                     <input type="hidden" name="topic_id" value="{{ topic.id }}">
                     <textarea name="content"></textarea>
                     <button>添加回复</button>

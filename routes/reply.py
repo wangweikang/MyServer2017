@@ -7,7 +7,7 @@ from flask import (
 )
 
 from routes import *
-
+from utils import log
 from models.reply import Reply
 
 
@@ -18,8 +18,7 @@ main = Blueprint('reply', __name__)
 def add():
     form = request.form
     u = current_user()
-    print('DEBUG', form)
+    log('DEBUG', form)
     m = Reply.new(form)
     m.set_user_id(u.id)
     return redirect(url_for('topic.detail', id=m.topic_id))
-
