@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/lib/editor/editor.css">
     <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
     <link rel="stylesheet" href="/static/css/will.css">
+    <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
     <script src="/static/lib/jquery-3.0.0.min.js"></script>
     <script src="/static/lib/markdownit.js"></script>
     <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
@@ -16,6 +17,40 @@
     <script src="/static/lib/editor/ext.js"></script>
     <link rel="icon" href="" type="image/x-icon"/>
     <script>
+    var renderMarkDown = function () {
+    marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: true,
+        pedantic: true,
+    });
+
+    $('.markdown-body').each(function () {
+        var tag = $(this);
+        var raw = tag.text();
+        tag.html(marked(raw));
+    });
+
+    $('pre > code').each(function () {
+        var tag = $(this);
+        var target = this;
+
+        var code = tag.text();
+        tag.empty();
+
+        var attr = tag.attr('class');
+        var language;
+        if (attr != undefined) {
+            language = attr.split('-')[1];
+        } else {
+            language = 'python';
+        }
+
+        initCodeMirror(code, language, target)
+
+        });
+    };
         var __main = function () {
             renderMarkDown();
         };
