@@ -40,8 +40,8 @@
             </div>
             <div class="inner post">
                 <div class="topic_list">
+                    {% for t in ms %}
                     <div class="cell">
-                        {% for t in ms %}
                         <div class="topic_title_wrapper">
                             <a class="user_avatar pull-left">
                                 <!--<img src={{'/uploads/'+t.user().user_image+'?v=3&amp;s=120'}} title="xxx"/>-->
@@ -57,8 +57,8 @@
                                 删除
                             </a>
                         </div>
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
