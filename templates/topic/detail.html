@@ -41,13 +41,8 @@
 
                 <div class='inner topic'>
                     <div class='topic_content'>
-                        <div class='markdown-text'>
+                        <div class='markdown-text editor'>
                             {{ topic.content }}
-                        </div>
-                        <div class='markdown_editor in_editor'>
-                            <div class='markdown_in_editor'>
-                                {{ topic.content }}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,6 +95,12 @@
                 </form>
             </div>
         </div>
-</body>
+<script>
+    (function () {
+        var editor = new Editor();
+        editor.render($('.editor')[0]);
+    })();
+</script>
 
+</body>
 </html>
