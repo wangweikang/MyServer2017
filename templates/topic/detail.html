@@ -12,6 +12,8 @@
     <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
     <script src="/static/lib/editor/editor.js"></script>
     <script src="/static/lib/editor/ext.js"></script>
+    <link rel="icon" href="" type="image/x-icon"/>
+
 </head>
 
 <body>
@@ -41,8 +43,8 @@
 
                 <div class='inner topic'>
                     <div class='topic_content'>
-                        <div class='markdown-text editor'>
-                            {{ topic.content }}
+                        <div class='markdown-text'>
+                            {{ topic.content | markdownit}}
                         </div>
                     </div>
                 </div>
@@ -80,7 +82,7 @@
                         </span>
                     </div>
                 </div>
-                <div class='reply_content from-leiwei1991'>
+                <div class='reply_content'>
                     <div class="markdown-text">
                         {{ r.content }}
                     </div>
