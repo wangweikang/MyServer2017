@@ -47,8 +47,6 @@ def add():
     form = request.form
     u = current_user()
     m = Topic.new(form, user_id=u.id)
-    for i in range(1000):
-        m = Topic.new(form, user_id=u.id)
     return redirect(url_for('.detail', id=m.id))
 
 
