@@ -38,7 +38,7 @@
 				</div>
 				<div class="inner post">
 					<div class="topic_list">
-						{% for t in ms %}
+					{% for t in ms %}
 						<div class="cell">
 							<div class="topic_title_wrapper">
 								<a class="user_avatar pull-left">
@@ -48,14 +48,15 @@
                                 	{{ t.title }}
                            	 	</a>
 								<span>
-									{{ t.replies() | count }} / { t.views }
+									回复：{{ t.replies() | count }}
+									点击数：{ t.views }
 								</span>
 								<a class="topic_title" href="{{url_for('topic.delete',id=t.id,token=token)}}">
                                 	删除
                             	</a>
 							</div>
 						</div>
-						{% endfor %}
+					{% endfor %}
 					</div>
 				</div>
 			</div>
