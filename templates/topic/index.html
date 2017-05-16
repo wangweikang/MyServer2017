@@ -53,9 +53,11 @@
 								回复：{{ t.replies() | count }}
 								点击数：{{ t.views }}
 							</span>
+                            <div class="inner">
                             <a class="topic_title" href="{{url_for('topic.delete',id=t.id,token=token)}}">
                                 删除
                             </a>
+                        </d>
                         </div>
                     </div>
                     {% endfor %}

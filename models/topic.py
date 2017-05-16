@@ -96,8 +96,6 @@ class Topic(Mongua):
         j = [Topic.from_json(i) for i in j]
         return j
 
-
-
     def replies(self):
         from .reply import Reply
         ms = Reply.find_all(topic_id=self.id)
