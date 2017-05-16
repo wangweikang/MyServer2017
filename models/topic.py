@@ -72,7 +72,6 @@ class Topic(Mongua):
 
     @classmethod
     def all_delay(cls):
-        time.sleep(3)
         return Topic.all()
 
     @classmethod
