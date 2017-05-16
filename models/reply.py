@@ -32,6 +32,5 @@ class Reply(Mongua):
 
 
     def set_user_id(self, user_id):
-        if user_id:
-            self.user_id = user_id
-            self.save()
+        self.user_id = user_id
+        self.save()

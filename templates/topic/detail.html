@@ -32,25 +32,25 @@
             tag.html(marked(raw));
         });
 
-        $('pre > code').each(function () {
-            var tag = $(this);
-            var target = this;
-
-            var code = tag.text();
-            tag.empty();
-
-            var attr = tag.attr('class');
-            var language;
-            if (attr != undefined) {
-                language = attr.split('-')[1];
-            } else {
-                language = 'python';
-            }
-
-            initCodeMirror(code, language, target)
-
-            });
-        };
+{#        $('pre > code').each(function () {#}
+{#            var tag = $(this);#}
+{#            var target = this;#}
+{##}
+{#            var code = tag.text();#}
+{#            tag.empty();#}
+{##}
+{#            var attr = tag.attr('class');#}
+{#            var language;#}
+{#            if (attr != undefined) {#}
+{#                language = attr.split('-')[1];#}
+{#            } else {#}
+{#                language = 'python';#}
+{#            }#}
+{##}
+{#            initCodeMirror(code, language, target)#}
+{##}
+{#            });#}
+{#        };#}
         var __main = function () {
             renderMarkDown();
         };
@@ -88,7 +88,7 @@
 
                 <div class='inner topic'>
                     <div class='topic_content'>
-                        <div class='markdown-text'>
+                        <div class='markdown-body'>
                             {{ topic.content }}
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class='reply_content'>
-                    <div class="markdown-body">
+                    <div class="markdown-text">
                         {{ r.content }}
                     </div>
                 </div>
