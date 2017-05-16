@@ -14,7 +14,11 @@
     <script src="/static/lib/editor/editor.js"></script>
     <script src="/static/lib/editor/ext.js"></script>
 </head>
-
+<style>
+.will-right {
+        float: right;
+    }
+</style>
 <body>
 <div id="main">
     <div id="sidebar">
@@ -54,7 +58,7 @@
 								点击数：{{ t.views }}
 							</span>
                             <a class="topic_title" href="{{url_for('topic.delete',id=t.id,token=token)}}">
-                                <span class="span-success">删除</span>
+                                <button class="btn btn-danger will-right">删除</button>
                             </a>
                         </div>
                     </div>
