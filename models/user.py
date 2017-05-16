@@ -94,6 +94,7 @@ class User(Mongua):
         pwd = form.get('password', '')
         code = form.get('code', '')
         log(code)
+        log(code == 'lol')
         if code == 'lol':
             if len(name) > 2 and User.find_by(username=name) is None:
                 u = User.new(form)
