@@ -93,15 +93,14 @@ class User(Mongua):
         name = form.get('username', '')
         pwd = form.get('password', '')
         code = form.get('password', '')
-        if code != 'lol':
-            return None
-        if len(name) > 2 and User.find_by(username=name) is None:
-            u = User.new(form)
-            u.password = u.salted_password(pwd)
-            u.save()
-            return u
-        else:
-            return None
+        if code == 'lol':
+            if len(name) > 2 and User.find_by(username=name) is None:
+                u = User.new(form)
+                u.password = u.salted_password(pwd)
+                u.save()
+                return u
+            else:
+                return None
 
     @classmethod
     def validate_login(cls, form):
