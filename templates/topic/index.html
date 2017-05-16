@@ -53,11 +53,11 @@
                             <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
                                 {{ t.title }}
                             </a>
-                            <span>
+                            <div class="topic_title will-right">
 								回复：{{ t.replies() | count }}
 								点击数：{{ t.views }}
-							</span>
-                            <a class="topic_title  will-right" href="{{url_for('topic.delete',id=t.id,token=token)}}">
+							</div>
+                            <a class="topic_title will-right" href="{{url_for('topic.delete',id=t.id,token=token)}}">
                                 <button class="btn btn-danger">删除</button>
                             </a>
                         </div>
