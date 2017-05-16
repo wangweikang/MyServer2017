@@ -26,8 +26,8 @@ def index():
         ms = Topic.cache_all()
         # ms = Topic.all_delay()
     else:
-        ms = Topic.cache_find(board_id)
-        # ms = Topic.find_all(board_id=board_id)
+        # ms = Topic.cache_find(board_id)
+        ms = Topic.find_all(board_id=board_id)
     token = str(uuid.uuid4())
     u = current_user()
     csrf_tokens['token'] = u.id
