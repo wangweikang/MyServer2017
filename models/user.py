@@ -12,7 +12,7 @@ class User(Model):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
-        self.user_image = 'default.png'
+        self.user_image = ''
 
     def salted_password(self, password, salt='$!@><?>HUI&DWQa`'):
         import hashlib
@@ -69,7 +69,7 @@ class User(Mongua):
         """
 
     def __init__(self):
-        self.user_image = 'default.png'
+        self.user_image = ''
 
     def salted_password(self, password, salt='$!@><?>HUI&DWQa`'):
         import hashlib
