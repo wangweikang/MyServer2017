@@ -25,7 +25,7 @@
             });
 
             $('.markdown-body').each(function () {
-                var tag = $(this);
+                var tag = "<br>" +$(this);
                 var raw = tag.text();
                 tag.html(marked(raw));
             });
