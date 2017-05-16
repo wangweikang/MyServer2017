@@ -1,7 +1,7 @@
 from models import Model
 from models.mongua import Mongua
 
-
+from utils import log
 class User(Model):
     """
     User 是一个保存用户数据的 model
@@ -92,7 +92,8 @@ class User(Mongua):
     def register(cls, form):
         name = form.get('username', '')
         pwd = form.get('password', '')
-        code = form.get('password', '')
+        code = form.get('code', '')
+        log('(code)')
         if code == 'lol':
             if len(name) > 2 and User.find_by(username=name) is None:
                 u = User.new(form)
