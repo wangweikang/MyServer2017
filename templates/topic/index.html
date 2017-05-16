@@ -16,7 +16,7 @@
 </head>
 <style>
 .will-right {
-        float: right;
+    float: right;
     }
 </style>
 <body>
@@ -57,8 +57,8 @@
 								回复：{{ t.replies() | count }}
 								点击数：{{ t.views }}
 							</span>
-                            <a class="topic_title" href="{{url_for('topic.delete',id=t.id,token=token)}}">
-                                <button class="btn btn-danger will-right">删除</button>
+                            <a class="topic_title  will-right" href="{{url_for('topic.delete',id=t.id,token=token)}}">
+                                <button class="btn btn-danger">删除</button>
                             </a>
                         </div>
                     </div>
@@ -68,12 +68,6 @@
         </div>
     </div>
 </div>
-<script>
-    (function () {
-        var editor = new Editor();
-        editor.render($('.editor')[0]);
-    })();
-</script>
 </body>
 
 </html>
