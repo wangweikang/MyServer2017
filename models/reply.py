@@ -28,9 +28,10 @@ class Reply(Mongua):
     def user(self):
         from .user import User
         u = User.find(self.user_id)
-        if u:
-            return u
+        return u
+
 
     def set_user_id(self, user_id):
-        self.user_id = user_id
-        self.save()
+        if user_id:
+            self.user_id = user_id
+            self.save()
