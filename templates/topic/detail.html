@@ -18,58 +18,40 @@
     <link rel="icon" href="" type="image/x-icon"/>
     <script>
         var renderMarkDown = function () {
-        marked.setOptions({
-            renderer: new marked.Renderer(),
-            gfm: true,
-            tables: true,
-            breaks: true,
-            pedantic: true,
-        });
-
-        $('.markdown-body').each(function () {
-            var tag = $(this);
-            var raw = tag.text();
-            tag.html(marked(raw));
-        });
-
-        $('pre > code').each(function () {
-            var tag = $(this);
-            var target = this;
-
-            var code = tag.text();
-            tag.empty();
-
-            var attr = tag.attr('class');
-            var language;
-            if (attr != undefined) {
-                language = attr.split('-')[1];
-            } else {
-                language = 'python';
-            }
-
-            initCodeMirror(code, language, target)
-
+            marked.setOptions({
+                renderer: new marked.Renderer(),
+                gfm: true,
+                tables: true,
+                breaks: true,
+                pedantic: true,
             });
+
+            $('.markdown-body').each(function () {
+                var tag = $(this);
+                var raw = tag.text();
+                tag.html(marked(raw));
+            });
+
         };
         var __main = function () {
             renderMarkDown();
         };
         $(document).ready(function () {
-                console.log('ready');
-                __main();
-            });
+            console.log('ready');
+            __main();
+        });
     </script>
 </head>
 
 <body>
-    <div id="main">
-        <div id="content">
-            <div class='panel'>
-                <div class='header topic_header'>
+<div id="main">
+    <div id="content">
+        <div class='panel'>
+            <div class='header topic_header'>
                     <span class="topic_full_title">
 			            {{ topic.title }}
       	            </span>
-                    <div class="changes">
+                <div class="changes">
                     <span>
                         发布于 XX 天前
                     </span>
@@ -83,65 +65,65 @@
                     <span>
                         来自 XX
                     </span>
-                    </div>
                 </div>
+            </div>
 
-                <div class='inner topic'>
-                    <div class='topic_content'>
-                        <div class='markdown-body'>
-                            {{ topic.content }}
-                        </div>
+            <div class='inner topic'>
+                <div class='topic_content'>
+                    <div class='markdown-body'>
+                        {{ topic.content }}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class='panel'>
-            <div class='header'>
+    <div class='panel'>
+        <div class='header'>
                 <span class='col_fade'>
                 <!-- 过滤器 -->
                 {{ topic.replies() | count }} 回复
             </span>
-            </div>
-            {% for r in topic.replies() %}
+        </div>
+        {% for r in topic.replies() %}
             <div class='cell reply_area reply_item'>
-                <div class='author_content'>
-                    <a href="" class="user_avatar">
-                        <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
-                        title="{{ r.user().username }}" />
-                    </a>
-                    <div class='user_info'>
-                        <a class='dark reply_author'>
+            <div class='author_content'>
+                <a href="" class="user_avatar">
+                    <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
+                         title="{{ r.user().username }}"/>
+                </a>
+                <div class='user_info'>
+                    <a class='dark reply_author'>
                         {{ r.user().username }}
                     </a>
-                        <a class="reply_time">
+                    <a class="reply_time">
                         {{ loop.index }}楼 • XXX 天前
                     </a>
-                    </div>
-                    <div class='user_action'>
+                </div>
+                <div class='user_action'>
                         <span>
                         <i class="fa up_btn fa-thumbs-o-up invisible" title="喜欢">
                         </i>
                         <span class="up-count">
                         </span>
                         </span>
-                    </div>
                 </div>
-
-                <div class='reply_content'>
-                    <div class="markdown-text">
-                        {{ r.content }}
-                    </div>
-                </div>
-
-            {% endfor %}
-            <div>
-            <form action="{{ url_for('reply.add') }}" method="post">
-                    <input type="hidden" name="topic_id" value="{{ topic.id }}">
-                    <textarea name="content"></textarea>
-                    <button>添加回复</button>
-                </form>
             </div>
+
+            <div class='reply_content'>
+                <div class="markdown-text">
+                    {{ r.content }}
+                </div>
+            </div>
+
+        {% endfor %}
+        <div>
+            <form action="{{ url_for('reply.add') }}" method="post">
+                <input type="hidden" name="topic_id" value="{{ topic.id }}">
+                <textarea name="content"></textarea>
+                <button>添加回复</button>
+            </form>
+        </div>
         </div>
 </body>
 </html>
