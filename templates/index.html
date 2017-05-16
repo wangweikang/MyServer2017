@@ -222,16 +222,16 @@
                 <div class="will-block"></div>
             </div>
             <div id="id-div-signup">
-                <form class="form-horizontal" method="post" action="{{ url_for('.register') }}">
+                <form method="post" action="{{ url_for('.register') }}">
                     <div class="will-form-textinput">
                         <div class="will-input-wrapper">
-                            <input type="text" id="id-input-username" type="text" placeholder='用户名' name="username">
+                            <input id="id-input-username" type="text" placeholder='用户名' name="username">
                         </div>
                         <div class="will-input-wrapper">
-                            <input type="text" id="id-input-password" type="text" placeholder='密码' name="password">
+                            <input type="text" id="id-input-password" placeholder='密码' name="password">
                         </div>
                         <div class="will-input-wrapper">
-                            <input type="text" id="id-input-code" type="text" placeholder='邀请码' name="code">
+                            <input type="text" id="id-input-code" placeholder='邀请码' name="code">
                         </div>
                     </div>
                     <button id="id-button-register" class="will-button-big">注册</button>
@@ -256,10 +256,10 @@
                 <form class="form-horizontal" method="post" action="{{ url_for('.login') }}">
                     <div class="will-form-textinput">
                         <div class="will-input-wrapper">
-                            <input type="text" id="id-input-login-username" type="text" placeholder='用户名' name="username">
+                            <input type="text" id="id-input-login-username" placeholder='用户名' name="username">
                         </div>
                         <div class="will-input-wrapper">
-                            <input type="text" id="id-input-login-password" type="text" placeholder='密码' name="password">
+                            <input type="text" id="id-input-login-password" placeholder='密码' name="password">
                         </div>
                     </div>
                     <button id="id-button-login" class="will-button-big">登录</button>
