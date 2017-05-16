@@ -6,7 +6,7 @@ from models.mongua import Mongua
 import logging
 import os
 import time
-ogger = logging.getLogger("bbs")
+logger = logging.getLogger("bbs")
 
 
 class Cache(object):

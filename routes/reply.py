@@ -1,5 +1,4 @@
 from flask import (
-    render_template,
     request,
     redirect,
     url_for,
@@ -18,7 +17,7 @@ main = Blueprint('reply', __name__)
 def add():
     form = request.form
     u = current_user()
-    log('DEBUG', form)
+    # log('DEBUG', form)
     m = Reply.new(form)
     m.set_user_id(u.id)
     return redirect(url_for('topic.detail', id=m.topic_id))
