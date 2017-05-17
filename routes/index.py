@@ -107,3 +107,21 @@ def add_img():
 @main.route("/uploads/<filename>")
 def uploads(filename):
     return send_from_directory(user_file_director, filename)
+
+
+@main.route('/base')
+def base():
+    u = current_user()
+    if u is None:
+        return redirect(url_for('.index'))
+    else:
+        return render_template('base.html')
+
+
+@main.route('/about')
+def about():
+    u = current_user()
+    if u is None:
+        return redirect(url_for('.index'))
+    else:
+        return render_template('about.html')
