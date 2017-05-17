@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>One</title>
+</head>
+<style>
+
+    .will-right {
+        float: right;
+    }
+
+    a.will-active {
+        background: red;
+    }
+
+    nav {
+        background: black;
+    }
+
+    a.will-nav-item {
+        /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
+        display: inline-block;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    a.will-nav-item:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+<nav>
+    <a class="will-nav-item will-active" href="#">首页</a>
+    <a class="will-nav-item" href="#">论坛</a>
+    <a class="will-nav-item" href="#">留言板</a>
+    <a class="will-nav-item" href="#">聊天室</a>
+    <a class="will-nav-item will-right" href="#">关于</a>
+    <a class="will-nav-item will-right" href="#">个人主页</a>
+</nav>
+</body>
+
+</html>
