@@ -26,6 +26,7 @@ body {
   font-size: 14px;
   float: right;
   margin-bottom: 20px;
+  z-index: -1;
 }
 #content .topic_full_title {
   font-size: 22px;
