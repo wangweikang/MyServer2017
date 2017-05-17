@@ -4,15 +4,13 @@ from flask import (
 )
 
 from routes import *
-from models.mail import Mail
 
 
 main = Blueprint('message', __name__)
 
 
-@main.route("/", methods=["GET"])
+@main.route("/")
 def index():
-    u = current_user()
 
     return render_template("message/index.html")
 
