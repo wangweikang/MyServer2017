@@ -1,14 +1,18 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>board admin</title>
 </head>
+
 <body>
-    <form action="/board/add" method="post">
+{% block content %}
+<form action="/board/add" method="post">
         <input name="title">
         <br>
         <button>add</button>
     </form>
+{% endblock %}
 </body>
 </html>

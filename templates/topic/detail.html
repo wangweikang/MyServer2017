@@ -47,12 +47,15 @@
     .will-right {
         float: right;
     }
+
     a.will-active {
         background: red;
     }
+
     nav {
         background: black;
     }
+
     a.will-nav-item {
         /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
         display: inline-block;
@@ -61,6 +64,7 @@
         text-align: center;
         text-decoration: none;
     }
+
     a.will-nav-item:hover {
         background-color: white;
         color: black;
@@ -112,42 +116,39 @@
 
     <div class='panel'>
         <div class='header'>
-                <span class='col_fade'>
+            <span class='col_fade'>
                 <!-- 过滤器 -->
                 {{ topic.replies() | count }} 回复
             </span>
         </div>
         {% for r in topic.replies() %}
             <div class='cell reply_area reply_item'>
-            <div class='author_content'>
-                <a href="" class="user_avatar">
-                    <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
-                         title="{{ r.user().username }}"/>
-                </a>
-                <div class='user_info'>
-                    <a class='dark reply_author'>
-                        {{ r.user().username }}
+                <div class='author_content'>
+                    <a href="" class="user_avatar">
+                        <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
+                             title="{{ r.user().username }}"/>
                     </a>
-                    <a class="reply_time">
-                        {{ loop.index }}楼 • XXX 天前
-                    </a>
-                </div>
-                <div class='user_action'>
-                        <span>
-                        <i class="fa up_btn fa-thumbs-o-up invisible" title="喜欢">
-                        </i>
-                        <span class="up-count">
-                        </span>
-                        </span>
+                    <div class='user_info'>
+                        <a class='dark reply_author'>
+                            {{ r.user().username }}
+                        </a>
+                        <a class="reply_time">
+                            {{ loop.index }}楼 • XXX 天前
+                        </a>
+                    </div>
+                    <div class='user_action'>
+                    <span>
+                        <i class="fa up_btn fa-thumbs-o-up invisible" title="喜欢"></i>
+                        <span class="up-count"></span>
+                    </span>
+                    </div>
                 </div>
             </div>
-
             <div class='reply_content'>
                 <div class="markdown-text">
                     {{ r.content }}
                 </div>
             </div>
-
         {% endfor %}
         <div>
             <form action="{{ url_for('reply.add') }}" method="post">
@@ -156,6 +157,7 @@
                 <button>添加回复</button>
             </form>
         </div>
-        </div>
+    </div>
+</div>
 </body>
 </html>

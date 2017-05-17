@@ -4,37 +4,38 @@
 <head>
     <meta charset="utf-8">
     <title>One</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <style>
+
+        .will-right {
+            float: right;
+        }
+
+        a.will-active {
+            background: red;
+        }
+
+        nav {
+            background: black;
+        }
+
+        a.will-nav-item {
+            /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
+            display: inline-block;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a.will-nav-item:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
-<style>
-
-    .will-right {
-        float: right;
-    }
-
-    a.will-active {
-        background: red;
-    }
-
-    nav {
-        background: black;
-    }
-
-    a.will-nav-item {
-        /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
-        display: inline-block;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-    }
-
-    a.will-nav-item:hover {
-        background-color: white;
-        color: black;
-        cursor: pointer;
-    }
-
-</style>
 
 <body>
 <nav>
@@ -45,14 +46,16 @@
     <a class="will-nav-item will-right" href="/about">关于</a>
     <a class="will-nav-item will-right" href="/profile">个人主页</a>
 </nav>
+{% block content %}
 <div class="guayang">
     <h1>施工中...</h1>
 </div>
 <div class="guayang">
-        <a href="#">
-            <img src="static/images/index.jpg" alt="图TM的挂了">
-        </a>
-    </div>
+    <a href="#">
+        <img src="static/images/index.jpg" alt="图TM的挂了">
+    </a>
+</div>
+{% endblock %}
 </body>
 
 </html>

@@ -3,8 +3,6 @@ from flask import (
     Blueprint,
 )
 
-from routes import *
-
 
 main = Blueprint('message', __name__)
 
