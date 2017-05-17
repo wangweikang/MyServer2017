@@ -19,7 +19,6 @@ def index():
     return render_template('board/admin_index.html')
 
 
-
 @main.route("/add", methods=["POST"])
 def add():
     form = request.form
