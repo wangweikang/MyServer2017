@@ -14,6 +14,6 @@ main = Blueprint('message', __name__)
 def index():
     u = current_user()
 
-    return render_template("mail/index.html")
+    return render_template("message/index.html")
 
 
