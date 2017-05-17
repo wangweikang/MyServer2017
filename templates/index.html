@@ -5,8 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>世界的正门</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
     <style type="text/css">
         a {
             text-decoration: none;
@@ -126,79 +124,9 @@
             });
         };
 
-        var loginForm = function () {
-            var keys = [
-                'username',
-                'password',
-            ];
-            var loginPrefix = 'id-input-login-';
-            var form = formFromKeys(keys, loginPrefix);
-            return form;
-        };
-
-        var registerForm = function () {
-            var keys = [
-                'username',
-                'signature',
-                'password',
-                'email',
-                'qq',
-                'captcha',
-            ];
-            var registerPrefix = 'id-input-';
-            var form = formFromKeys(keys, registerPrefix);
-            return form;
-        };
-
-        // actions
-        var register = function () {
-            var form = registerForm();
-            var success = function (r) {
-                log('reg, ', r);
-                if (r.success) {
-                    log(r.next);
-                    window.location.href = r.next;
-                } else {
-                    alert(r.message);
-                }
-            };
-            var error = function (err) {
-                log('reg, ', err);
-            };
-            vip.register(form, success, error);
-        };
-
-        var login = function () {
-            var form = loginForm();
-            var success = function (r) {
-                log('login, ', r);
-                if (r.success) {
-                    log(r.next);
-                    window.location.href = r.next;
-                } else {
-                    alert(r.message);
-                }
-            };
-            var error = function (err) {
-                log('login, ', err);
-                alert(err);
-            };
-            vip.login(form, success, error);
-        };
-
-        var bindActions = function () {
-            $('#id-button-register').on('click', function () {
-                register();
-            });
-
-            $('#id-button-login').on('click', function () {
-                login();
-            });
-        };
-
         var __main = function () {
             setup();
-            bindActions();
+{#            bindActions();#}
             // select signup
             $('#id-a-login').click();
         };
