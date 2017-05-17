@@ -56,10 +56,9 @@ def delete():
     token = request.args.get('token')
     u = current_user()
     # 判断 token 是否是我们给的
-    if token in csrf_tokens and csrf_tokens[token] == u.id:
+    if token in csrf_tokens and csrf_tokens['token'] == u.id:
         csrf_tokens.pop(token)
         if u is not None:
-            print('删除 topic 用户是', u, id)
             Topic.delete(id)
             return redirect(url_for('.index'))
         else:
