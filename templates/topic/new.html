@@ -13,40 +13,82 @@
     <script src="/static/lib/markdownit.js"></script>
     <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
     <script src="/static/lib/editor/ext.js"></script>
+    <style>
+        .will-right {
+            float: right;
+        }
+        a.will-active {
+            background: red;
+        }
+        nav {
+            background: black;
+        }
+        a.will-nav-item {
+            /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
+            display: inline-block;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        a.will-nav-item:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .will-dropdown-content {
+            margin-top: 10px;
+            display: none;
+            position: absolute;
+            background-color: black;
+            padding: 10px;
+        }
+
+        .will-dropdown {
+            position: relative;
+        }
+
+        .will-dropdown:hover .will-dropdown-content {
+            display: block;
+        }
+
+        .will-dropdown-content a {
+            display: block;
+            padding: 5px 15px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .will-dropdown-content a:hover {
+            background: white;
+            color: black;
+        }
+
+        .will-dropdown-title {
+            color: black;
+            padding: 10px;
+            background: pink;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<style>
-    .will-right {
-        float: right;
-    }
-    a.will-active {
-        background: red;
-    }
-    nav {
-        background: black;
-    }
-    a.will-nav-item {
-        /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
-        display: inline-block;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-    }
-    a.will-nav-item:hover {
-        background-color: white;
-        color: black;
-        cursor: pointer;
-    }
-</style>
 <body>
-<nav>
+<nav class="will-dropdown">
     <a class="will-nav-item will-active" href="/base">首页</a>
     <a class="will-nav-item" href="/topic">论坛</a>
     <a class="will-nav-item" href="/message">留言板</a>
     <a class="will-nav-item" href="/chat/index">聊天室</a>
     <a class="will-nav-item" href="/todo">TODO</a>
     <a class="will-nav-item will-right" href="/about">关于</a>
-    <a class="will-nav-item will-right" href="/profile">个人主页</a>
+    <a class="will-nav-item will-right will-dropdown-title" href="#">个人</a>
+    <div class="will-dropdown-content">
+        <a class="will-nav-item" href="/profile">个人主页</a>
+        <a class="will-nav-item" href="/base">私信</a>
+        <a class="will-nav-item" href="/base">设置</a>
+        <a class="will-nav-item" href="/base">退出</a>
+    </div>
 </nav>
 <div id="main">
     <div id="content">
