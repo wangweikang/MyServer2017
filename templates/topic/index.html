@@ -14,101 +14,102 @@
     <script src="/static/lib/editor/editor.js"></script>
     <script src="/static/lib/editor/ext.js"></script>
 </head>
-    <style type="text/css">
-        .will-tree {
-            position: relative;
-            margin: 0 auto;
-            left: 50%;
-        }
+<style type="text/css">
+    .will-tree {
+        position: relative;
+        margin: 0 auto;
+        left: 50%;
+    }
 
-        .will-branch {
-            width: 200px;
-        }
+    .will-branch {
+        width: 200px;
+    }
 
-        .will-branch:nth-child(2n) {
-            position: relative;
-            background: red;
-            left: -200px;
-        }
+    .will-branch:nth-child(2n) {
+        position: relative;
+        background: red;
+        left: -200px;
+    }
 
-        .will-branch:nth-child(2n+1) {
-            background: lightblue;
-        }
+    .will-branch:nth-child(2n+1) {
+        background: lightblue;
+    }
 
-        .will-right {
-            float: right;
-        }
+    .will-right {
+        float: right;
+    }
 
-        a.will-active {
-            background: red;
-        }
+    a.will-active {
+        background: red;
+    }
 
-        nav {
-            background: black;
-        }
+    nav {
+        background: black;
+    }
 
-        a.will-nav-item {
-            /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
-            display: inline-block;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-        }
-        span.will-nav-item {
-            /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
-            display: inline-block;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-        }
+    a.will-nav-item {
+        /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
+        display: inline-block;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+    }
 
-        a.will-nav-item:hover {
-            background-color: white;
-            color: black;
-            cursor: pointer;
-        }
+    span.will-nav-item {
+        /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
+        display: inline-block;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+    }
 
-        .will-dropdown-content {
-            margin-top: 10px;
-            display: none;
-            right: 0;
-            position: absolute;
-            background-color: black;
-            padding: 10px;
-        }
+    a.will-nav-item:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+    }
 
-        .will-dropdown {
-            position: relative;
-            display: inline-block;
-        }
+    .will-dropdown-content {
+        margin-top: 10px;
+        display: none;
+        right: 0;
+        position: absolute;
+        background-color: black;
+        padding: 10px;
+    }
 
-        .will-dropdown:hover .will-dropdown-content {
-            display: block;
-            z-index: 999
-        }
+    .will-dropdown {
+        position: relative;
+        display: inline-block;
+    }
 
-        .will-dropdown-content a {
-            display: block;
-            padding: 5px 15px;
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .will-dropdown:hover .will-dropdown-content {
+        display: block;
+        z-index: 999
+    }
 
-        .will-dropdown-content a:hover {
-            background: white;
-            color: black;
-        }
+    .will-dropdown-content a {
+        display: block;
+        padding: 5px 15px;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-        .will-dropdown-title {
-            color: azure;
-            padding: 10px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    .will-dropdown-content a:hover {
+        background: white;
+        color: black;
+    }
+
+    .will-dropdown-title {
+        color: azure;
+        padding: 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 <nav>
@@ -153,24 +154,26 @@
             <div class="inner post">
                 <div class="topic_list">
                     {% for t in ms %}
-                        <div class="cell">
-                            <div class="topic_title_wrapper">
-                                <a class="user_avatar pull-left">
-                                    <!--<img src={{'/uploads/'+t.user().user_image+'?v=3&amp;s=120'}} title="xxx"/>-->
-                                </a>
-                                <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
-                                    {{ t.title }} ||
-                                </a>
-                                <span>
+                        {% if not t.delete %}
+                            <div class="cell">
+                                <div class="topic_title_wrapper">
+                                    <a class="user_avatar pull-left">
+                                        <!--<img src={{'/uploads/'+t.user().user_image+'?v=3&amp;s=120'}} title="xxx"/>-->
+                                    </a>
+                                    <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                                        {{ t.title }} ||
+                                    </a>
+                                    <span>
 								回复：{{ t.replies() | count }}
 								点击数：{{ t.views }}
 							</span>
-                                <a class="topic_title will-right"
-                                   href="{{ url_for('topic.delete',id=t.id,token=token) }}">
-                                    <button class="btn btn-danger">删除</button>
-                                </a>
+                                    <a class="topic_title will-right"
+                                       href="{{ url_for('topic.delete',id=t.id,token=token) }}">
+                                        <button class="btn btn-danger">删除</button>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

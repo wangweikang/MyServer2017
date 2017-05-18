@@ -1,5 +1,6 @@
 import time
 from pymongo import MongoClient
+
 mongua = MongoClient()
 
 
@@ -224,11 +225,11 @@ class Mongua(object):
 
     def delete(self):
         name = self.__class__.__name__
-        query = {
-            'id': self.id,
-        }
+        query = dict(id=self.id)
         values = {
-            'deleted': True
+            "$set": {
+                "deleted": True
+            }
         }
         mongua.db[name].update_one(query, values)
         # self.deleted = True

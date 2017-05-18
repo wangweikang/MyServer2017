@@ -18,6 +18,8 @@ import uuid
 from utils import log
 
 csrf_tokens = dict()
+
+
 @main.route("/")
 def index():
     # board_id = 2
@@ -57,12 +59,12 @@ def delete():
     u = current_user()
     # 判断 token 是否是我们给的
     if csrf_tokens['token'] == token:
-        csrf_tokens.pop(token)
-        user_id = Topic.get(id).user().id
-        log(user_id)
-        log(u.id)
+        csrf_tokens.pop('token')
+        m = Topic.get(id)
+        print(m)
+        user_id = m.user().id
         if u is not None and user_id == u.id:
-            Topic.delete(id)
+            Topic.delete(m)
             return redirect(url_for('.index'))
         else:
             abort(404)
