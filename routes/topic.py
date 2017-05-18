@@ -31,7 +31,7 @@ def index():
     token = str(uuid.uuid4())
     log('1:{token}', token)
     u = current_user()
-    csrf_tokens['token'] = u.id
+    csrf_tokens['token'] = token
     log('1:{csrf_tokens}', csrf_tokens['token'])
     log('1:{uid}', u.id)
     bs = Board.all()
@@ -62,7 +62,7 @@ def delete():
     log('2:{token}', token)
     log('2:{uid}', u.id)
     log('2:{csrf_tokens}', csrf_tokens)
-    if token in csrf_tokens and csrf_tokens['token'] == u.id:
+    if token in csrf_tokens and csrf_tokens['token'] == token:
         csrf_tokens.pop(token)
         if u is not None:
             Topic.delete(id)
