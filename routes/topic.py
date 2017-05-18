@@ -29,11 +29,8 @@ def index():
         # ms = Topic.cache_find(board_id)
         ms = Topic.find_all(board_id=board_id)
     token = str(uuid.uuid4())
-    log('1:{token}', token)
     u = current_user()
     csrf_tokens['token'] = token
-    log('1:{uid}', u.id)
-    log('1:{csrf_tokens}', csrf_tokens)
     bs = Board.all()
     return render_template("topic/index.html", ms=ms, token=token, bs=bs)
 
@@ -59,12 +56,11 @@ def delete():
     token = request.args.get('token')
     u = current_user()
     # 判断 token 是否是我们给的
-    log('2:{token}', token)
-    log('2:{uid}', u.id)
-    log('2:{csrf_tokens}', csrf_tokens)
     if csrf_tokens['token'] == token:
         csrf_tokens.pop(token)
-        user_id = Topic.get(id).user_id
+        user_id = Topic.get(id).user().id
+        log(user_id)
+        log(u.id)
         if u is not None and user_id == u.id:
             Topic.delete(id)
             return redirect(url_for('.index'))
