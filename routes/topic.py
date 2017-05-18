@@ -32,8 +32,8 @@ def index():
     log('1:{token}', token)
     u = current_user()
     csrf_tokens['token'] = token
-    log('1:{csrf_tokens}', csrf_tokens['token'])
     log('1:{uid}', u.id)
+    log('1:{csrf_tokens}', csrf_tokens)
     bs = Board.all()
     return render_template("topic/index.html", ms=ms, token=token, bs=bs)
 
