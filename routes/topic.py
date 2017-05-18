@@ -47,8 +47,11 @@ def detail(id):
 @main.route("/add", methods=["POST"])
 def add():
     form = request.form
+    log(form)
     u = current_user()
+    log(u)
     m = Topic.new(form, user_id=u.id)
+    log(m)
     return redirect(url_for('.detail', id=m.id))
 
 
@@ -57,11 +60,9 @@ def delete():
     id = int(request.args.get('id'))
     token = request.args.get('token')
     u = current_user()
-    # 判断 token 是否是我们给的
     if csrf_tokens['token'] == token:
         csrf_tokens.pop('token')
         m = Topic.get(id)
-        print(m)
         user_id = m.user().id
         if u is not None and user_id == u.id:
             Topic.delete(m)
