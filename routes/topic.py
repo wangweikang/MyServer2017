@@ -15,10 +15,9 @@ from models.board import Board
 main = Blueprint('topic', __name__)
 
 import uuid
-from utils import log
+
 
 csrf_tokens = dict()
-
 
 @main.route("/")
 def index():
@@ -47,11 +46,8 @@ def detail(id):
 @main.route("/add", methods=["POST"])
 def add():
     form = request.form
-    log(form)
     u = current_user()
-    log(u)
     m = Topic.new(form, user_id=u.id)
-    log(m)
     return redirect(url_for('.detail', id=m.id))
 
 
