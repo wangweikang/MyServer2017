@@ -31,7 +31,7 @@ def current_user():
 def index():
     u = current_user()
     if u is not None:
-        redirect(url_for('topic.index'))
+        return redirect(url_for('topic.index'))
     return render_template("index.html", user=u)
 
 
