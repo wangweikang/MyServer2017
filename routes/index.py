@@ -27,19 +27,11 @@ def current_user():
     return u
 
 
-"""
-用户在这里可以
-    访问首页
-    注册
-    登录
-
-用户登录后, 会写入 session, 并且定向到 /profile
-"""
-
-
 @main.route("/")
 def index():
     u = current_user()
+    if u is not None:
+        redirect(url_for('topic.index'))
     return render_template("index.html", user=u)
 
 
