@@ -43,7 +43,25 @@
         });
     </script>
 </head>
-<style>
+<style type="text/css">
+    .will-tree {
+        position: relative;
+        margin: 0 auto;
+        left: 50%;
+    }
+
+    .will-branch {
+        width: 200px;
+    }
+    .will-branch:nth-child(2n) {
+        position: relative;
+        background: red;
+        left: -200px;
+    }
+
+    .will-branch:nth-child(2n+1) {
+        background: lightblue;
+    }
     .will-right {
         float: right;
     }
@@ -57,7 +75,6 @@
     }
 
     a.will-nav-item {
-        /* 设置 inlin-block, 这样才能设置 a 的尺寸和 padding */
         display: inline-block;
         color: white;
         padding: 20px;
@@ -70,17 +87,19 @@
         color: black;
         cursor: pointer;
     }
-     .will-dropdown-content {
+
+    .will-dropdown-content {
         margin-top: 10px;
         display: none;
+        right: 0;
         position: absolute;
         background-color: black;
         padding: 10px;
     }
 
     .will-dropdown {
-
         position: relative;
+        display: inline-block;
     }
 
     .will-dropdown:hover .will-dropdown-content {
@@ -102,9 +121,8 @@
     }
 
     .will-dropdown-title {
-        color: black;
+        color: azure;
         padding: 10px;
-        background: pink;
         text-decoration: none;
         cursor: pointer;
     }
