@@ -1,160 +1,74 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>bbs club</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/lib/editor/editor.css">
-    <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
-    <script src="/static/lib/jquery-3.0.0.min.js"></script>
-    <script src="/static/lib/markdownit.js"></script>
-    <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
-    <script src="/static/lib/editor/editor.js"></script>
-    <script src="/static/lib/editor/ext.js"></script>
+    {% block title %}
+        <meta charset="UTF-8">
+        <title>bbs club</title>
+        <link rel="stylesheet" href="/static/lib/editor/editor.css">
+        <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
+        <script src="/static/lib/jquery-3.0.0.min.js"></script>
+        <script src="/static/lib/markdownit.js"></script>
+        <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
+        <script src="/static/lib/editor/editor.js"></script>
+        <script src="/static/lib/editor/ext.js"></script>
+    {% endblock %}
 </head>
-<style type="text/css">
-
-    .will-right {
-        float: right;
-    }
-
-    nav {
-        background: black;
-    }
-
-    a.will-nav-item {
-        display: inline-block;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-    }
-
-    span.will-nav-item {
-        display: inline-block;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-    }
-
-    a.will-nav-item:hover {
-        background-color: white;
-        color: black;
-        cursor: pointer;
-    }
-
-    .will-dropdown-content {
-        margin-top: 10px;
-        display: none;
-        right: 0;
-        position: absolute;
-        background-color: black;
-        padding: 10px;
-    }
-
-    .will-dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .will-dropdown:hover .will-dropdown-content {
-        display: block;
-        z-index: 999
-    }
-
-    .will-dropdown-content a {
-        display: block;
-        padding: 5px 15px;
-        color: white;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .will-dropdown-content a:hover {
-        background: white;
-        color: black;
-    }
-
-    .will-dropdown-title {
-        color: azure;
-        padding: 10px;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
 <body>
-<nav>
-    <a class="will-nav-item will-active" href="/base">首页</a>
-    <a class="will-nav-item" href="/topic">论坛</a>
-    <a class="will-nav-item" href="/message">留言板</a>
-    <a class="will-nav-item" href="/chat/index/">聊天室</a>
-    <a class="will-nav-item" href="/todo">TODO</a>
-    <a class="will-nav-item" href="/rubik">魔方</a>
-    <a class="will-nav-item will-right" href="/about">关于</a>
-    <span class="will-nav-item will-right will-dropdown">
-        <a class="will-dropdown-title" href="#">个人</a>
-        <div class="will-dropdown-content">
-            <a class="will-nav-item" href="/profile">主页</a>
-            <a class="will-nav-item" href="/base">私信</a>
-            <a class="will-nav-item" href="/base">设置</a>
-            <a class="will-nav-item" href="/base">退出</a>
-        </div>
-    </span>
-</nav>
-<div id="main">
-    <div id="sidebar">
-        <div class="panel">
-            <div class="inner">
-                <a href="/topic/new" class="create_topic_btn">
-                    <span class="span-success">发布话题</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="content">
-        <div class="panel">
-            <div class="header">
-                <a href="/topic" class="topic-tab current-tab">
-                    全部
-                </a>
-                {% for b in bs %}
-                    <a href="/topic?board_id={{ b.id }}" class="topic-tab current-tab">
-                        {{ b.title }}
+{% block content %}
+    <div id="main">
+        <div id="sidebar">
+            <div class="panel">
+                <div class="inner">
+                    <a href="/topic/new" class="create_topic_btn">
+                        <span class="span-success">发布话题</span>
                     </a>
-                {% endfor %}
+                </div>
             </div>
-            <div class="inner post">
-                <div class="topic_list">
-                    {% for t in ms %}
-                        {% if not t.deleted %}
-                            <div class="cell">
-                                <div class="topic_title_wrapper">
-                                    <a class="user_avatar pull-left">
-                                        <!--<img src={{'/uploads/'+t.user().user_image+'?v=3&amp;s=120'}} title="xxx"/>-->
-                                    </a>
-                                    <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
-                                        {{ t.title }} ||
-                                    </a>
-                                    <span>
+        </div>
+        <div id="content">
+            <div class="panel">
+                <div class="header">
+                    <a href="/topic" class="topic-tab current-tab">
+                        全部
+                    </a>
+                    {% for b in bs %}
+                        <a href="/topic?board_id={{ b.id }}" class="topic-tab current-tab">
+                            {{ b.title }}
+                        </a>
+                    {% endfor %}
+                </div>
+                <div class="inner post">
+                    <div class="topic_list">
+                        {% for t in ms %}
+                            {% if not t.deleted %}
+                                <div class="cell">
+                                    <div class="topic_title_wrapper">
+                                        <a class="user_avatar pull-left">
+                                            <!--<img src={{'/uploads/'+t.user().user_image+'?v=3&amp;s=120'}} title="xxx"/>-->
+                                        </a>
+                                        <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                                            {{ t.title }} ||
+                                        </a>
+                                        <span>
 								回复：{{ t.replies() | count }}
 								点击数：{{ t.views }}
 							</span>
-                                    <a class="topic_title will-right"
-                                       href="{{ url_for('topic.delete',id=t.id,token=token) }}">
-                                        <button class="btn btn-danger">删除</button>
-                                    </a>
+                                        <a class="topic_title will-right"
+                                           href="{{ url_for('topic.delete',id=t.id,token=token) }}">
+                                            <button class="btn btn-danger">删除</button>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+{% endblock %}
 </body>
 
 </html>

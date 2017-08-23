@@ -1,27 +1,26 @@
 {% extends "base.html" %}
 <!DOCTYPE html>
 <html>
-
 <head lang="en">
     {% block title %}
-    <meta charset="utf-8">
-    <title>3D拖拽酷炫魔方</title>
-    <link type="text/css" href="/static/css/css.css" rel="stylesheet">
-    <link type="text/css" href="/static/css/index.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <title>3D拖拽酷炫魔方</title>
+        <link type="text/css" href="/static/css/css.css" rel="stylesheet">
+        <link type="text/css" href="/static/css/index.css" rel="stylesheet">
     {% endblock %}
 </head>
 
 <body>
 {% block content %}
-<div id="wrap">
-    <div class="front"></div>
-    <div class="back"></div>
-    <div class="left"></div>
-    <div class="right"></div>
-    <div class="top"></div>
-    <div class="bottom"></div>
-</div>
-<script src="/static/js/index.js"></script>
+    <div id="wrap">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+    <script src="/static/js/index.js"></script>
 {% endblock %}
 </body>
 </html>

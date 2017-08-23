@@ -1,239 +1,132 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>bbs club</title>
-    <link href="//cdn.bootcss.com/github-markdown-css/2.4.0/github-markdown.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/lib/editor/editor.css">
-    <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
-    <link rel="stylesheet" href="/static/css/will.css">
-    <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-    <script src="/static/lib/jquery-3.0.0.min.js"></script>
-    <script src="/static/lib/markdownit.js"></script>
-    <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
-    <link rel="icon" href="" type="image/x-icon"/>
-    <script>
-        var renderMarkDown = function () {
-            marked.setOptions({
-                renderer: new marked.Renderer(),
-                gfm: true,
-                tables: true,
-                breaks: true,
-                pedantic: true,
-                sanitize: true,
-                smartLists: true,
-                smartypants: true
-            });
+    {% block title %}
+        <meta charset="UTF-8">
+        <title>bbs club</title>
+        <link href="//cdn.bootcss.com/github-markdown-css/2.4.0/github-markdown.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/lib/editor/editor.css">
+        <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
+        <link rel="stylesheet" href="/static/css/will.css">
+        <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+        <script src="/static/lib/jquery-3.0.0.min.js"></script>
+        <script src="/static/lib/markdownit.js"></script>
+        <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
+        <link rel="icon" href="" type="image/x-icon"/>
+        <script>
+            var renderMarkDown = function () {
+                marked.setOptions({
+                    renderer: new marked.Renderer(),
+                    gfm: true,
+                    tables: true,
+                    breaks: true,
+                    pedantic: true,
+                    sanitize: true,
+                    smartLists: true,
+                    smartypants: true
+                });
 
-            $('.markdown-body').each(function () {
-                var tag = $(this);
-                var raw = tag.text();
-                tag.html(marked(raw));
-            });
+                $('.markdown-body').each(function () {
+                    var tag = $(this);
+                    var raw = tag.text();
+                    tag.html(marked(raw));
+                });
 
-        };
-        var __main = function () {
-            renderMarkDown();
-        };
-        $(document).ready(function () {
-            console.log('ready');
-            __main();
-        });
-    </script>
+            };
+            var __main = function () {
+                renderMarkDown();
+            };
+            $(document).ready(function () {
+                console.log('ready');
+                __main();
+            });
+        </script>
+    {% endblock %}
 </head>
-<style type="text/css">
-    .will-tree {
-        position: relative;
-        margin: 0 auto;
-        left: 50%;
-    }
-
-    .will-branch {
-        width: 200px;
-    }
-
-    .will-branch:nth-child(2n) {
-        position: relative;
-        background: red;
-        left: -200px;
-    }
-
-    .will-branch:nth-child(2n+1) {
-        background: lightblue;
-    }
-
-    .will-right {
-        float: right;
-    }
-
-    a.will-active {
-        background: red;
-    }
-
-    nav {
-        background: black;
-    }
-
-    a.will-nav-item {
-        display: inline-block;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-    }
-
-    span.will-nav-item {
-        display: inline-block;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-    }
-
-    a.will-nav-item:hover {
-        background-color: white;
-        color: black;
-        cursor: pointer;
-    }
-
-    .will-dropdown-content {
-        margin-top: 10px;
-        display: none;
-        right: 0;
-        position: absolute;
-        background-color: black;
-        padding: 10px;
-    }
-
-    .will-dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .will-dropdown:hover .will-dropdown-content {
-        display: block;
-        z-index: 999
-    }
-
-    .will-dropdown-content a {
-        display: block;
-        padding: 5px 15px;
-        color: white;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .will-dropdown-content a:hover {
-        background: white;
-        color: black;
-    }
-
-    .will-dropdown-title {
-        color: azure;
-        padding: 10px;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
 <body>
-<nav>
-    <a class="will-nav-item will-active" href="/base">首页</a>
-    <a class="will-nav-item" href="/topic">论坛</a>
-    <a class="will-nav-item" href="/message">留言板</a>
-    <a class="will-nav-item" href="/chat/index/">聊天室</a>
-    <a class="will-nav-item" href="/todo">TODO</a>
-    <a class="will-nav-item" href="/rubik">魔方</a>
-    <a class="will-nav-item will-right" href="/about">关于</a>
-    <span class="will-nav-item will-right will-dropdown">
-        <a class="will-dropdown-title" href="#">个人</a>
-        <div class="will-dropdown-content">
-            <a class="will-nav-item" href="/profile">主页</a>
-            <a class="will-nav-item" href="/base">私信</a>
-            <a class="will-nav-item" href="/base">设置</a>
-            <a class="will-nav-item" href="/base">退出</a>
-        </div>
-    </span>
-</nav>
-<div id="main">
-    <div id="content">
-        <div class='panel'>
-            <div class='header topic_header'>
+{% block content %}
+    <div id="main">
+        <div id="content">
+            <div class='panel'>
+                <div class='header topic_header'>
                     <span class="topic_full_title">
 			            {{ topic.title }}
       	            </span>
-                <div class="changes">
+                    <div class="changes">
                     <span>
                         发布于 XX 天前
                     </span>
-                    <span>
+                        <span>
                         作者
                         <a href="">{{ topic.user().username }}</a>
         	        </span>
-                    <span>
+                        <span>
           	            {{ topic.views }} 次浏览
         	        </span>
-                    <span>
+                        <span>
                         来自 XX
                     </span>
+                    </div>
                 </div>
-            </div>
 
-            <div class='inner topic'>
-                <div class='topic_content'>
-                    <div class='markdown-body'>
-                        {{ topic.content }}
+                <div class='inner topic'>
+                    <div class='topic_content'>
+                        <div class='markdown-body'>
+                            {{ topic.content }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class='panel'>
-        <div class='header'>
+        <div class='panel'>
+            <div class='header'>
             <span class='col_fade'>
                 <!-- 过滤器 -->
                 {{ topic.replies() | count }} 回复
             </span>
-        </div>
-        {% for r in topic.replies() %}
-            <div class='cell reply_area reply_item'>
-                <div class='author_content'>
-                    <a href="" class="user_avatar">
-                        <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
-                             title="{{ r.user().username }}"/>
-                    </a>
-                    <div class='user_info'>
-                        <a class='dark reply_author'>
-                            {{ r.user().username }}
+            </div>
+            {% for r in topic.replies() %}
+                <div class='cell reply_area reply_item'>
+                    <div class='author_content'>
+                        <a href="" class="user_avatar">
+                            <img src="https://vip.cocode.cc/uploads/avatar/192.gif"
+                                 title="{{ r.user().username }}"/>
                         </a>
-                        <a class="reply_time">
-                            {{ loop.index }}楼 • XXX 天前
-                        </a>
-                    </div>
-                    <div class='user_action'>
+                        <div class='user_info'>
+                            <a class='dark reply_author'>
+                                {{ r.user().username }}
+                            </a>
+                            <a class="reply_time">
+                                {{ loop.index }}楼 • XXX 天前
+                            </a>
+                        </div>
+                        <div class='user_action'>
                     <span>
                         <i class="fa up_btn fa-thumbs-o-up invisible" title="喜欢"></i>
                         <span class="up-count"></span>
                     </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class='reply_content cell reply_area reply_item'>
-                <div class="markdown-text">
-                    {{ r.content }}
+                <div class='reply_content cell reply_area reply_item'>
+                    <div class="markdown-text">
+                        {{ r.content }}
+                    </div>
                 </div>
+            {% endfor %}
+            <div>
+                <form action="{{ url_for('reply.add') }}" method="post">
+                    <input type="hidden" name="topic_id" value="{{ topic.id }}">
+                    <textarea name="content"></textarea>
+                    <button>添加回复</button>
+                </form>
             </div>
-        {% endfor %}
-        <div>
-            <form action="{{ url_for('reply.add') }}" method="post">
-                <input type="hidden" name="topic_id" value="{{ topic.id }}">
-                <textarea name="content"></textarea>
-                <button>添加回复</button>
-            </form>
         </div>
     </div>
-</div>
+{% endblock %}
 </body>
 </html>
