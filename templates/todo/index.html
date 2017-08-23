@@ -1,22 +1,40 @@
-{% extends "base.html" %}
 <!DOCTYPE html>
 <html>
+    <head>
 
-<head>
-    <meta charset="utf-8">
-    <title>TODO</title>
-</head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>TODO</title>
+        <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//cdn.bootcss.com/font-awesome/3.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//cdn.bootcss.com/csshake/1.5.1/csshake.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/css/todo.css">
+    </head>
+    <body>
+        <div class="container todo-content">
+            <h1 class="todo-title">
+                <a href="/">Todo</a>
+            </h1>
+            <div class="alert alert-info" role="alert">
+                看起来您还没有登录 todo，请在下面的输入框中输入密钥，或者点
+                <strong>
+                    <a href='#' id="id-a-generate-code" class="alert-link">这里</a>
+                </strong>
+                生成一个新的登录密钥
+            </div>
+            <form action="/user/login" method="post">
+                <div class="input-group user-login-form">
+                    <input id="id-input-user-token" name="user_token" class="form-control" type="text" name="task">
+                    <span class="input-group-btn">
+                        <button id="id-button-add" class="btn btn-default" type="submit">登录 todo</button>
+                    </span>
+                </div>
+            </form>
+        </div>
 
-<body>
-{% block content %}
-<div class="guayang">
-    <h1>施工中...</h1>
-</div>
-<div class="guayang">
-        <a href="#">
-            <img src="../static/images/sou.gif" alt="图TM的挂了">
-        </a>
-    </div>
-</body>
-{% endblock %}
+        <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/static/js/api.js"></script>
+        <script src="/static/js/auth.js"></script>
+        <script src="/static/js/utils.js"></script>
+    </body>
 </html>

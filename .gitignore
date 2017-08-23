@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.idea
 env/
 build/
 develop-eggs/
@@ -87,3 +88,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+static/css/todo.css
+static/js/api.js
+static/js/auth.js
+static/js/utils.js
+static/img/
