@@ -35,7 +35,7 @@ app.register_blueprint(board_routes, url_prefix='/board')
 app.register_blueprint(mail_routes, url_prefix='/mail')
 app.register_blueprint(message_routes, url_prefix='/message')
 app.register_blueprint(todo_routes, url_prefix='/todo')
-app.register_blueprint(rubik_routes, url_prefix='/todo')
+app.register_blueprint(rubik_routes, url_prefix='/rubik')
 
 
 # 运行代码
