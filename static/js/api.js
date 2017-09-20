@@ -1,23 +1,21 @@
-var log = function() {
+var log = function () {
     console.log.apply(console, arguments)
 }
 
-var e = function(sel) {
+var e = function (sel) {
     return document.querySelector(sel)
 }
 
-var queryChildElement = function(parent, sel) {
+var queryChildElement = function (parent, sel) {
     return parent.querySelector(sel)
 }
 
-var queryParentElement = function(child, sel) {
+var queryParentElement = function (child, sel) {
     return child.closest(sel)
 }
 
-/*
- ajax 函数
-*/
-var ajax = function(method, path, data, responseCallback) {
+
+var ajax = function (method, path, data, responseCallback) {
     var r = new XMLHttpRequest()
     // 设置请求方法和请求地址
     r.open(method, path, true)
@@ -25,8 +23,8 @@ var ajax = function(method, path, data, responseCallback) {
     // 这个不是必须的
     r.setRequestHeader('Content-Type', 'application/json')
     // 注册响应函数
-    r.onreadystatechange = function() {
-        if(r.readyState === 4) {
+    r.onreadystatechange = function () {
+        if (r.readyState === 4) {
             // r.response 存的就是服务器发过来的放在 HTTP BODY 中的数据
             responseCallback(r.response)
         }

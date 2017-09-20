@@ -160,9 +160,7 @@ class Model(object):
         用 all 方法读取文件中的所有 model 并生成一个 list
         把 self 添加进去并且保存进文件
         """
-        # log('debug save')
         models = self.all()
-        # log('models', models)
         # 如果没有 id，说明是新添加的元素
         if self.id is None:
             # 设置 self.id

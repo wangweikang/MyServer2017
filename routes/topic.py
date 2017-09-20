@@ -16,8 +16,8 @@ main = Blueprint('topic', __name__)
 
 import uuid
 
-
 csrf_tokens = dict()
+
 
 @main.route("/")
 def index():
