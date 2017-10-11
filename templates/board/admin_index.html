@@ -3,15 +3,15 @@
 <html>
 <head>
     {% block title %}
-    <meta charset="utf-8">
-    <title>board admin</title>
+        <meta charset="utf-8">
+        <title>board admin</title>
     {% endblock %}
 </head>
 
 <body>
 {% block content %}
-<form action="/board/add" method="post">
-        <input name="title">
+    <form action="/board/add" method="post">
+        <input required="required" name="title"/>
         <br>
         <button>add</button>
     </form>

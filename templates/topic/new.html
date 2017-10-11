@@ -3,76 +3,77 @@
 <html lang="en">
 <head>
     {% block title %}
-    <meta charset="UTF-8">
-    <title>bbs club</title>
-    <link rel="stylesheet" href="/static/lib/editor/editor.css">
-    <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
-    <script src="/static/lib/jquery-3.0.0.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/static/lib/editor/editor.js"></script>
-    <script src="/static/lib/markdownit.js"></script>
-    <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
-    <script src="/static/lib/editor/ext.js"></script>
+        <meta charset="UTF-8">
+        <title>bbs club</title>
+        <link rel="stylesheet" href="/static/lib/editor/editor.css">
+        <link rel="stylesheet" href="/static/lib/webuploader/webuploader.css">
+        <script src="/static/lib/jquery-3.0.0.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/static/lib/editor/editor.js"></script>
+        <script src="/static/lib/markdownit.js"></script>
+        <script src="/static/lib/webuploader/webuploader.withoutimage.js"></script>
+        <script src="/static/lib/editor/ext.js"></script>
     {% endblock %}
 </head>
 <body>
 {% block content %}
-<div id="main">
-    <div id="content">
-        <div class="panel">
-            <div class="inner post">
-                <form id="create_topic_form" method="post" action="{{ url_for('.add') }}">
-                    <fieldset>
+    <div id="main">
+        <div id="content">
+            <div class="panel">
+                <div class="inner post">
+                    <form id="create_topic_form" method="post" action="{{ url_for('.add') }}">
+                        <fieldset>
                         <textarea autofocus class='span9' id='title' name='title' rows='1'
                                   placeholder="标题字数 10 字以上"></textarea>
-                        <span class="tab-selector">选择版块：</span>
-                        <select name="board_id" id="board" required>
-                            <option value="">请选择</option>
-                            {% for b in bs %}
-                                <option value="{{ b.id }}">{{ b.title }}</option>
-                            {% endfor %}
-                        <h3 style="color:red">首行请空一行，才可以更好的支持markdown语法</h3>
-                        </select>
-                        <div class='markdown_editor in_editor'>
-                            <div class='markdown_in_editor'>
+                            <span class="tab-selector">选择版块：</span>
+                            <select name="board_id" id="board" required>
+                                <option value="">请选择</option>
+                                {% for b in bs %}
+                                    <option value="{{ b.id }}">{{ b.title }}</option>
+                                {% endfor %}
+                                <h3 style="color:red">首行请空一行，才可以更好的支持markdown语法</h3>
+                            </select>
+                            <div class='markdown_editor in_editor'>
+                                <div class='markdown_in_editor'>
                                 <textarea class='editor' name='content' rows='20'
                                           placeholder='文章支持 Markdown 语法, 请注意标记代码'></textarea>
-                                <div class='editor_buttons'>
-                                    <input type="submit" class='span-primary submit_btn'
-                                           data-loading-text="提交中" value="提交">
+                                    <div class='editor_buttons'>
+                                        <input type="submit" class='span-primary submit_btn'
+                                               data-loading-text="提交中" value="提交">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </fieldset>
-                </form>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="false" style="display: block;">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            ×
-        </button>
-        <h3 id="editorToolImageTitle">
-            添加连接
-        </h3>
-    </div>
-    <div class="modal-body">
-        <form class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">
-                    标题
-                </label>
-                <div class="controls">
-                    <input type="text" name="title" placeholder="Title">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">
-                    连接</label>
+    <div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="false"
+         style="display: block;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+            </button>
+            <h3 id="editorToolImageTitle">
+                添加连接
+            </h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">
+                        标题
+                    </label>
                     <div class="controls">
-                        <input type="text" name="link"value="http://"placeholder="Link">
+                        <input type="text" name="title" placeholder="Title">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">
+                        连接</label>
+                    <div class="controls">
+                        <input type="text" name="link" value="http://" placeholder="Link">
                     </div>
                 </div>
             </form>
@@ -82,42 +83,45 @@
                 确定
             </button>
         </div>
-</div>
-<div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="false" style="display: block;">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            ×
-        </button>
-        <h3 id="editorToolImageTitle">
-            图片
-        </h3>
     </div>
-    <div class="modal-body">
-        <div class="upload-img" style="height: 50px; padding: 60px 0px; text-align: center; border: 4px dashed rgb(221, 221, 221);">
-            <div class="button webuploader-container" style="width: 86px; height: 40px; margin: 0px auto;">
-                <div class="webuploader-pick">
-                    上传图片
+    <div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="false"
+         style="display: block;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+            </button>
+            <h3 id="editorToolImageTitle">
+                图片
+            </h3>
+        </div>
+        <div class="modal-body">
+            <div class="upload-img"
+                 style="height: 50px; padding: 60px 0px; text-align: center; border: 4px dashed rgb(221, 221, 221);">
+                <div class="button webuploader-container" style="width: 86px; height: 40px; margin: 0px auto;">
+                    <div class="webuploader-pick">
+                        上传图片
+                    </div>
+                    <div id="rt_rt_1bg65allg16t45q01skb1vg114td1"
+                         style="position: absolute; overflow: hidden; bottom: auto; right: auto; width: 86px; height: 40px; top: 0px; left: 0px;">
+                        <input type="file" name="file" class="webuploader-element-invisible" accept="image/*">
+                        <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);">
+                        </label>
+                    </div>
                 </div>
-                <div id="rt_rt_1bg65allg16t45q01skb1vg114td1" style="position: absolute; overflow: hidden; bottom: auto; right: auto; width: 86px; height: 40px; top: 0px; left: 0px;">
-                    <input type="file" name="file" class="webuploader-element-invisible" accept="image/*">
-                    <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);">
-                    </label>
-                </div>
-            </div>
-            <span class="tip" style="display: none;">
+                <span class="tip" style="display: none;">
             </span>
-            <div class="alert alert-error hide">
+                <div class="alert alert-error hide">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    (function () {
-        var editor = new Editor();
-        editor.render($('.editor')[0]);
-    })();
-</script>
+    <script>
+        (function () {
+            var editor = new Editor();
+            editor.render($('.editor')[0]);
+        })();
+    </script>
 {% endblock %}
 </body>
 </html>
